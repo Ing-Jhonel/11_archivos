@@ -1,0 +1,4 @@
+F 46456 456456 FGHFGHFH
+RUC del cliente (X para terminar): GJY 76678678 6.76868e+06 YUKYUK
+RUC del cliente (X para terminar): hyy 567567 5.67576e+07 yukyukyuk
+RUC del cliente (X para terminar): X
