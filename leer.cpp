@@ -5,38 +5,36 @@ using namespace std;
 #include <iomanip> // Formato de salida
 
 int main(){
-	const int IGV=21;
+	
+	const int IGV = 21;
 	string ruc, producto;
 	int unidades;
 	double precio, neto, total, igv;
 	char aux;
 	ifstream archivo;
-	int contador = 0;
+	int c=0;
+	archivo.open("compras.txt"); //Abre el archivo ya creado
 	
-	archivo.open("compras.txt"); // Apertura
-	
-	if (archivo.is_open()) {
-		archivo >> ruc;
+	if(archivo.is_open()){ //existe el archivo, osea se abrio
+		archivo >> ruc; //Primer ruc
 		while(ruc != "X"){
 			archivo >> unidades >> precio;
-			archivo.get(aux);
-			getline(archivo,producto);
-			contador++;
-			neto= unidades*precio;
-			igv=neto*IGV/100;
+			archivo.get(aux); //salta el espacio
+			getline(archivo, producto);
+			c++;
+			neto = unidades*precio;
+			igv = neto*IGV/100;
 			total = neto + igv;
-			cout << "Compra" << contador << " .-" << endl;
-			cout << "   " << producto << ": " << unidades
+			cout << "Compra " << c << ".-" << endl
+				<< "	" << producto << ": " << unidades
 				<< " x " << fixed << setprecision(2)
 				<< precio << " = " << neto << " - I.G.V.: "
 				<< igv << " - Total: " << total << endl;
-			archivo >> ruc; // Siguiente RUC
-			
-		} 
-		archivo.close();	
+			archivo >> ruc; // siguiente ruc;
 		}
-		else{
-			cout << "ERROR: No se ha podido abrir el archivo" << endl;
+		archivo.close();//cierra el archivo
+	} else {
+		cout << "ERROR: No se ha podido abrir el archivo." << endl;
 	}
 	return 0;	
 }
